@@ -1,0 +1,1 @@
+python gpu_critic_snap.py --geom circle --width 128 --bc_margin 1.0 --restarts 1 --tau_min 0.0 --iters 100000 --seed 0 --snap_every 500

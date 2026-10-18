@@ -1,0 +1,8 @@
+# Training and evaluation
+torch>=2.1
+numpy>=1.24
+# Figures, tables and the fold-evolution gif
+matplotlib>=3.7
+pillow>=9.0
+# Notebook
+jupyter

@@ -1,0 +1,48 @@
+% Certificate table of the full-horizon campaign, ten seeds per configuration and geometry (120 runs); value RMS in scientific notation.
+% Numbers from results_<geom>_FH10.json (eval_all.py::mc_cert).
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccc}
+\toprule
+candidate ($\tau = 4$) & value RMS & flagged \% & max ratio $\hat\lambda_{\max}/C^{*}$ \\
+\midrule
+\multicolumn{4}{l}{\emph{circle $S^{1}$}} \\
+$V^{*}$ (analytic) & --- & $0.0$ & $0.0$ \\
+planted sawtooth & --- & $8.2$ & $100$ \\
+Fourier-feature & $1.36\ [0.93,1.86]$ & $11.6\ [5.2,18.8]$ & $212\ [88,568]$ \\
+soft-periodic & $8.7\ [7.4,9.5]\times10^{-3}$ & $\bm{0.0\ [0.0,0.0]}$ & $\bm{0.8\ [0.4,1.1]}$ \\
+min-of-charts & $4.4\ [3.6,6.8]\times10^{-3}$ & $\bm{0.0\ [0.0,3.6]}$ & $1.8\ [0.4,5.9]$ \\
+geometric & $\bm{4.3\ [3.9,4.8]\times10^{-3}}$ & $\bm{0.0\ [0.0,4.1]}$ & $1.5\ [0.6,8.4]$ \\
+\midrule
+\multicolumn{4}{l}{\emph{torus $\mathbb{T}^{2}$}} \\
+$V^{*}$ (analytic) & --- & $0.0$ & $1.0$ \\
+planted sawtooth & --- & $8.3$ & $135$ \\
+Fourier-feature & $1.38\ [1.14,1.75]$ & $20.5\ [12.7,37.5]$ & $158\ [100,883]$ \\
+soft-periodic & $2.0\ [1.9,2.5]\times10^{-2}$ & $0.8\ [0.2,2.7]$ & $4.3\ [2.4,7.4]$ \\
+min-of-charts & $\bm{3.0\ [2.6,12.0]\times10^{-3}}$ & $1.3\ [0.0,4.1]$ & $2.6\ [1.2,24.2]$ \\
+geometric & $3.3\ [2.9,4.1]\times10^{-3}$ & $\bm{0.0\ [0.0,3.4]}$ & $\bm{2.0\ [1.3,3.0]}$ \\
+\midrule
+\multicolumn{4}{l}{\emph{torus $\mathbb{T}^{4}$}} \\
+$V^{*}$ (analytic) & --- & $0.0$ & $1.0$ \\
+planted sawtooth & --- & $7.9$ & $167$ \\
+Fourier-feature & $2.61\ [2.33,3.16]$ & $87.4\ [81.7,94.4]$ & $112\ [96,156]$ \\
+soft-periodic & $5.1\ [1.9,11.2]\times10^{-1}$ & $2.9\ [0.9,9.3]$ & $18.1\ [4.5,73.4]$ \\
+min-of-charts & $\bm{8.7\ [6.4,98.8]\times10^{-3}}$ & $\bm{0.0\ [0.0,1.5]}$ & $\bm{1.1\ [1.0,33.1]}$ \\
+geometric & $8.9\ [6.6,15.6]\times10^{-3}$ & $\bm{0.0\ [0.0,0.5]}$ & $\bm{1.1\ [1.1,2.3]}$ \\
+\bottomrule
+\end{tabular}
+\caption{Monte Carlo semiconcavity test at $\tau = 4$ ($4\times10^{4}$
+probes; eight random directions each, one on $S^{1}$; $h = 0.02$; the region
+$d \le 3\varepsilon$ and concave kinks masked; a probe is flagged when
+$\hat\lambda_{\max} > 2\,C^{*}$), applied to $V^{*}$, to a planted sawtooth (a
+$\tau$-independent triangle wave in the first coordinate $\Delta_{x}$, of
+period $0.5$ and amplitude $1.25$, so with slope of magnitude $1/\dv$ on its
+flanks and convex kinks at its valleys, which shows what a clearly folded
+function scores) and to all $120$ trained networks; median and range over the
+ten seeds.  The value RMS column repeats Table~\ref{tab:campaign}
+($\tau \in (0.05, 8)$, not only $\tau = 4$).  On $S^{1}$ the curvature of
+$V^{*}$ vanishes away from its kinks, so its ratio is $0$ rather than $1$.
+Bold marks the lowest median among the trained networks within each
+geometry, with ties all marked.}
+\label{tab:cert}
+\end{table}

@@ -1,0 +1,28 @@
+# Trained networks (weights, optimiser state, history) and training snapshots are not versioned:
+# see README.md ("Checkpoints").  The result JSONs in analysis/ carry every number of the paper.
+*.pt
+runs_fullhorizon/**
+!runs_fullhorizon/README.md
+fold_evolution/*/snapshots/
+fold_evolution/*/frames/
+output/
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*_executed.ipynb
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+!fold_evolution/*/train.log
+
+# OS
+.DS_Store
