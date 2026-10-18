@@ -20,25 +20,46 @@ forward evaluations of the network alone.
 ## Layout
 
 ```
-gpu_critic.py                 networks, geometries, loss and trainer of the campaign (one file; CLI below)
-grid_certificate.py           grid-based semiconcavity certificate on T^2 (comparison baseline)
-launch/                       how the 120 runs are launched: train_run.sh (one run), slurm_campaign.sbatch (all)
-runs_fullhorizon/             where the trained networks go (not versioned; see "Checkpoints")
-analysis/                     evaluation of the checkpoints, tables, and the figure notebook
-  common.py                   repository root, trainer import, constants
-  eval_all.py                 scores every checkpoint -> results_<geom>_FH10.json (all diagnostics incl. the certificate)
-  score_new.py                scores only checkpoints missing from the results files and merges them
-  selector10.py               chart-selector statistics of the min-of-charts runs -> selector10.json
-  check5pct.py                the "within 5 %" share under the paper's criterion and under a purely relative one
-  make_tables10.py            tables10.txt / tables10.tex (bodies) from the results files
-  table_campaign10_rms.tex    Table 1 of the paper (complete, with caption)
-  table_cert10_sci.tex        certificate table of the paper (complete, with caption)
-  results_*_FH10.json         the evaluation of all 120 runs (every number in the paper derives from these)
-  paper_figures.ipynb         every figure of the paper, one panel per cell -> ../figs/*.pdf
-figs/                         the figures of the paper (PDF)
-fold_evolution/               the fold-formation experiment (snapshot trainer, gif, profiles); own README
-paper/references.bib          bibliography of the paper
+PENN/
+├── gpu_critic.py            networks, geometries, loss and trainer (one file)
+├── grid_certificate.py      grid-based certificate on T^2 (comparison baseline)
+├── launch/                  how the 120 runs are launched
+├── runs_fullhorizon/        where the trained networks go (not versioned)
+├── analysis/                evaluation, tables and the figure notebook
+├── figs/                    the figures of the paper (PDF)
+├── fold_evolution/          the fold-formation experiment (own README)
+└── paper/                   bibliography
 ```
+
+### Top level
+
+| File / folder | What it is |
+| --- | --- |
+| `gpu_critic.py` | The trainer of the campaign: the three geometries ($S^1$, $\mathbb{T}^2$, $\mathbb{T}^4$), the four network configurations, the PINN loss and the Adam loop with checkpointing. One file, command line below. |
+| `grid_certificate.py` | The grid-based semiconcavity certificate on $\mathbb{T}^2$ ($241^2$ grid, finite-difference Hessian), used as a comparison baseline for the Monte Carlo certificate of `analysis/eval_all.py`. |
+| `launch/train_run.sh` | Trains one run with the exact flags of the paper: `bash launch/train_run.sh <geom> <config> <seed>`. |
+| `launch/slurm_campaign.sbatch` | The whole campaign as a 120-task Slurm array (calls `train_run.sh`). |
+| `runs_fullhorizon/` | Destination of the trained networks, `{S1,T2,T4}/<geom>_<config>_s<seed>/`; not versioned, see "Checkpoints". Its README describes the layout. |
+| `figs/` | The figures of the paper as PDF, written by the notebook. |
+| `fold_evolution/` | Snapshot trainer, profiles and gif of the fold-formation run on $S^1$; see its README. |
+| `paper/references.bib` | Bibliography of the paper. |
+| `requirements.txt` | Python dependencies. |
+
+### `analysis/`
+
+| File | What it does |
+| --- | --- |
+| `common.py` | Locates the repository root (or `$P2_BUNDLE`), imports the trainer and the certificate module, defines the constants $\varepsilon$, $\Delta v$ and $V^*$. |
+| `eval_all.py` | Scores every checkpoint with one set of definitions (value RMS, within-5 % share, capture-band gradient, residuals, seam gap, Monte Carlo certificate, chart selector) and writes `results_<geom>_FH10.json`. |
+| `score_new.py` | Scores only the checkpoints missing from the results files and merges them in. |
+| `selector10.py` | Chart-selector statistics of every min-of-charts run on distance-limited states, written to `selector10.json`. |
+| `check5pct.py` | The within-5 % share under the paper's criterion, $\lvert V - V^*\rvert < 0.05\max(V^*, 1)$, and under a purely relative one, written to `check5pct.json`. |
+| `make_tables10.py` | The table bodies `tables10.txt` and `tables10.tex` from the results files. |
+| `table_campaign10_rms.tex` | Table 1 of the paper, complete with caption. |
+| `table_cert10_sci.tex` | The certificate table of the paper, complete with caption. |
+| `results_{circle,torus,torus4}_FH10.json` | The evaluation of all 120 runs; every number in the paper derives from these. |
+| `selector10.json`, `check5pct.json` | Outputs of the two scripts above for the paper's runs. |
+| `paper_figures.ipynb` | Every figure of the paper, one panel per cell, assembled and written to `../figs/`. |
 
 Configuration names in the code: `smooth` = Fourier-feature, `rawsoft` = soft-periodic, `min` =
 min-of-charts, `folded` (`--charts_single`) = geometric.  Geometries: `circle`, `torus`, `torus4`.
