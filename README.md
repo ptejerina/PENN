@@ -1,5 +1,7 @@
 # PENN — Pursuit-Evasion Neural Networks
 
+[![arXiv](https://img.shields.io/badge/arXiv-2610.27193-b31b1b.svg)](https://arxiv.org/abs/2610.27193)
+
 Pursuit-Evasion Neural Networks (PENNs) are physics-informed networks that learn the viscosity solution,
 and avoid the almost-everywhere spurious solutions, of a differential game described by a
 Hamilton–Jacobi–Isaacs equation.  This repository holds the code, results and figures of
@@ -7,7 +9,7 @@ Hamilton–Jacobi–Isaacs equation.  This repository holds the code, results an
 > R. Jimenez, O. Ignatenko, P. Protopapas, L. Sarieddine, P. Solé-Vilaró, P. Tarancón-Álvarez,
 > P. Tejerina-Pérez, N. Tkach, M. Traforetti,
 > *Low Residuals, Wrong Value: Learning the Viscosity Solution of Hamilton–Jacobi–Isaacs Equations with PINNs*
-> (submitted to the Journal of Computational Physics, 2026).
+> arXiv:2610.27193 (2026), submitted to the Journal of Computational Physics.
 
 A physics-informed neural network (PINN) is trained on the residual of the Hamilton–Jacobi–Isaacs
 equation of a fixed-horizon pursuit–evasion game on the circle $S^1$ and the flat tori $\mathbb{T}^2$,
@@ -135,7 +137,7 @@ acceptance; the result files in `analysis/` contain their complete evaluation.
 
 ## Two pitfalls that silently invalidate this kind of training
 
-Both are described in Appendix C of the paper and should be checked before any campaign.
+Both should be checked before any campaign.
 
 1. On some PyTorch/MPS versions the backward pass of a final `Linear(width, 1)` layer returns a
    gradient with respect to the layer *input* that is about $30\times$ too small through a
