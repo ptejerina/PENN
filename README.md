@@ -9,7 +9,7 @@ Hamilton–Jacobi–Isaacs equation.  This repository holds the code, results an
 > R. Jimenez, P. Tejerina-Pérez, L. Sarieddine, P. Tarancón-Álvarez, M. Traforetti, P. Solé-Vilaró, 
 > O. Ignatenko, N. Tkach, P. Protopapas, 
 > *Low Residuals, Wrong Value: Learning the Viscosity Solution of Hamilton–Jacobi–Isaacs Equations with PINNs*
-> arXiv:2610.27193 (2026), submitted to the Journal of Computational Physics.
+> (2026), submitted to the Journal of Computational Physics.
 
 A physics-informed neural network (PINN) is trained on the residual of the Hamilton–Jacobi–Isaacs
 equation of a fixed-horizon pursuit–evasion game on the circle $S^1$ and the flat tori $\mathbb{T}^2$,
