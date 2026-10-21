@@ -6,8 +6,8 @@ Pursuit-Evasion Neural Networks (PENNs) are physics-informed networks that learn
 and avoid the almost-everywhere spurious solutions, of a differential game described by a
 Hamilton–Jacobi–Isaacs equation.  This repository holds the code, results and figures of
 
-> R. Jimenez, O. Ignatenko, P. Protopapas, L. Sarieddine, P. Solé-Vilaró, P. Tarancón-Álvarez,
-> P. Tejerina-Pérez, N. Tkach, M. Traforetti,
+> R. Jimenez, P. Tejerina-Pérez, L. Sarieddine, P. Tarancón-Álvarez, M. Traforetti, P. Solé-Vilaró, 
+> O. Ignatenko, N. Tkach, P. Protopapas, 
 > *Low Residuals, Wrong Value: Learning the Viscosity Solution of Hamilton–Jacobi–Isaacs Equations with PINNs*
 > arXiv:2610.27193 (2026), submitted to the Journal of Computational Physics.
 
