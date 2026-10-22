@@ -19,6 +19,8 @@ $\mathbb{T}^4$, where the value function is known in closed form.  Four paramete
 mesh-free semiconcavity test ("certificate") that detects folded almost-everywhere solutions from
 forward evaluations of the network alone.
 
+To check an example video of how the Fourier-Feature parametrization converges to an almost-everywhere with $O(1)$ errors in value see [fold_evolution](./fold_evolution/).
+
 ## Layout
 
 ```
